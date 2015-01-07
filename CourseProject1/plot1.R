@@ -1,0 +1,8 @@
+install.packages("data.table")
+library(data.table)
+train <- fread("D:\\Courses\\Exploratory Data Analysis\\CourseProject1\\household_power_consumption.txt",sep=";",colClasses=c("character","character","numeric","numeric","numeric","numeric","numeric","numeric","numeric"))
+train<-as.data.frame(train)
+train$Date <- as.Date(train$Date,"%d/%m/%Y")
+png(file="plot1.png")
+hist(as.numeric(subset(train,Date == "2007-02-01" | Date == "2007-02-02")$Global_active_power),main="Global Active Power",xlab= "Global Active Power (kilowatts)",col="red")
+dev.off()
